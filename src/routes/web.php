@@ -22,3 +22,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/admin', 'App\Http\Controllers\Admin\IndexController@index');
+Route::get('/admin/demo', 'App\Http\Controllers\Admin\IndexController@demo')->middleware(['role:bien-tap-vien']);
+Route::get('/admin/post', 'App\Http\Controllers\Admin\IndexController@postJob')->middleware(['can:add post']);

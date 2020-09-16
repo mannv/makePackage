@@ -2,6 +2,7 @@
 
 namespace Plum\LaravelPermission;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelPermissionServiceProvider extends ServiceProvider
@@ -14,14 +15,16 @@ class LaravelPermissionServiceProvider extends ServiceProvider
     public function boot()
     {
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'plum');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'plum');
+         $this->loadViewsFrom(__DIR__.'/../resources/views', 'plum');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+         $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
+
+        Paginator::defaultView('plum::bootstrap-4');
     }
 
     /**
@@ -48,7 +51,7 @@ class LaravelPermissionServiceProvider extends ServiceProvider
     {
         return ['laravel-permission'];
     }
-    
+
     /**
      * Console-specific booting.
      *
