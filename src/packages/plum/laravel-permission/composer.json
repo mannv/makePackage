@@ -1,0 +1,44 @@
+{
+    "name": "plum/laravel-permission",
+    "description": ":package_description",
+    "license": "license",
+    "authors": [
+        {
+            "name": "mannv",
+            "email": "anhmantk@gmail.com",
+            "homepage": "https://github.com/mannv"
+        }
+    ],
+    "homepage": "https://github.com/plum/laravel-permission",
+    "keywords": ["Laravel", "LaravelPermission"],
+    "require": {
+        "illuminate/support": "~5|~6|~7|~8",
+        "spatie/laravel-permission": "~3|~4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~8.0|~9.0",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "~3|~4|~5|~6",
+        "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Plum\\LaravelPermission\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Plum\\LaravelPermission\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Plum\\LaravelPermission\\LaravelPermissionServiceProvider"
+            ],
+            "aliases": {
+                "LaravelPermission": "Plum\\LaravelPermission\\Facades\\LaravelPermission"
+            }
+        }
+    }
+}

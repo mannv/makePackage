@@ -16,7 +16,9 @@
         "laravel/jetstream": "^1.2",
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.0",
-        "livewire/livewire": "^2.0"
+        "livewire/livewire": "^2.0",
+        "plum/laravel-permission": "@dev",
+        "spatie/laravel-permission": "^3.16"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
@@ -61,5 +63,14 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
+    },
+    "repositories": {
+        "plum/laravel-permission": {
+            "type": "path",
+            "url": "/var/www/packages/plum/laravel-permission",
+            "options": {
+                "symlink": true
+            }
+        }
     }
 }
