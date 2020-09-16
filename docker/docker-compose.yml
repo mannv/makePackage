@@ -17,7 +17,7 @@ services:
       - mysql
       - redis
     ports:
-      - 89:80
+      - "80:80"
   php-fpm:
     build:
       context: ./php-fpm
@@ -48,7 +48,7 @@ services:
     environment:
       - PMA_ARBITRARY=1
     ports:
-      - "8091:80"
+      - "8080:80"
     volumes:
       - ./phpmyadmin/config.ini:/usr/local/etc/php/conf.d/phpmyadmin.ini
   nodejs:
