@@ -1,0 +1,64 @@
+version: '3.3'
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    volumes:
+      - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
+      - ./nginx/sites/web.conf:/etc/nginx/sites-available/default.conf
+    command: nginx
+    depends_on:
+      - php-fpm
+      - mysql
+      - redis
+    ports:
+      - 89:80
+  php-fpm:
+    build:
+      context: ./php-fpm
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    volumes:
+      - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
+      - ./php-fpm/php7.3.ini:/usr/local/etc/php/php.ini
+  mysql:
+    build: ./mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql/app.cnf:/etc/mysql/conf.d/app.cnf
+      - ./mysql/initdb.d/:/docker-entrypoint-initdb.d/
+  redis:
+    build: ./redis
+    volumes:
+      - ./redis/tmp/redis:/data
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+    ports:
+      - "8091:80"
+    volumes:
+      - ./phpmyadmin/config.ini:/usr/local/etc/php/conf.d/phpmyadmin.ini
+  nodejs:
+    build: ./nodejs
+    volumes:
+      - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
+    tty: true
+    command: node
+volumes:
+  elasticsearch-data:
+    driver: local
+  mysql-data:
+    driver: local
