@@ -15,16 +15,18 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">{{__('Display name')}}</th>
                 <th scope="col">{{__('Name')}}</th>
                 <th scope="col" class="text-right">{{__('Created at')}}</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($roles as $user)
+            @foreach($roles as $role)
                 <tr>
                     <th scope="row">{{ ($roles->currentPage() - 1) * $roles->perPage() + $loop->iteration }}</th>
-                    <td>{{$user->name}}</td>
-                    <td class="text-right">{{$user->created_at}}</td>
+                    <td>{{$role->name_display}}</td>
+                    <td>{{$role->name}}</td>
+                    <td class="text-right">{{$role->created_at}}</td>
                 </tr>
             @endforeach
             </tbody>

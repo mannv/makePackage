@@ -31,7 +31,10 @@ class RoleController extends BaseController
 
     public function store(RoleRequest $request)
     {
-        dd($request->all());
+        $params = $request->all();
+        $this->role->createNewRole($params);
+        $prefixName = config('laravel-permission.prefix.name');
+        return redirect()->route($prefixName . 'role.index')->with('SUCCESS', __('Add role success.'));
     }
 
     public function edit($id)

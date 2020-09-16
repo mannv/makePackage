@@ -12,7 +12,9 @@
     </div>
     <div>
         {!! Pform::open(['url' => route($prefixName . 'role.store'), 'id' => 'form-demo'], \Plum\LaravelPermission\Requests\RoleRequest::class) !!}
-        {!! Pform::text('name', __('Your name')) !!}
+        {!! Pform::text('name_display', __('Name display')) !!}
+        {!! Pform::text('name', __('Role name')) !!}
+        <p>Vui lòng nhập kiểu Slug</p>
         {!! Pform::submit(__('Submit')) !!}
         {!! Pform::close() !!}
     </div>
