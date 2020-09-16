@@ -38,7 +38,7 @@
         </table>
 
         <div class="float-right">
-            {{ $users->links() }}
+            {{ $users->appends(request()->all())->links() }}
         </div>
         <div class="clearfix"></div>
     </div>

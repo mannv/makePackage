@@ -1,0 +1,46 @@
+<?php
+
+namespace Plum\LaravelPermission\Controllers;
+
+use Illuminate\Routing\Controller as BaseController;
+use Plum\LaravelPermission\Models\Role;
+
+class RoleController extends BaseController
+{
+    /**
+     * @var Role
+     */
+    private $role;
+
+    public function __construct(Role $user)
+    {
+        $this->role = $user;
+    }
+
+    public function index()
+    {
+        $roles = $this->role->getAll();
+        return view('plum::role.index', ['roles' => $roles]);
+    }
+
+    public function create()
+    {
+        return view('plum::role.create');
+    }
+
+    public function store()
+    {
+        dd(request()->all());
+    }
+
+    public function edit($id)
+    {
+        dd($id);
+    }
+
+    public function update($id)
+    {
+        dump(request()->all());
+        dd($id);
+    }
+}
