@@ -11,6 +11,9 @@
         </a>
     </div>
     <div>
-        Form o day
+        {!! Pform::open(['url' => route($prefixName . 'role.store'), 'id' => 'form-demo'], \Plum\LaravelPermission\Requests\RoleRequest::class) !!}
+        {!! Pform::text('name', __('Your name')) !!}
+        {!! Pform::submit(__('Submit')) !!}
+        {!! Pform::close() !!}
     </div>
 @endsection

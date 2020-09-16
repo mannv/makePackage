@@ -4,6 +4,7 @@ namespace Plum\LaravelPermission\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 use Plum\LaravelPermission\Models\Role;
+use Plum\LaravelPermission\Requests\RoleRequest;
 
 class RoleController extends BaseController
 {
@@ -28,9 +29,9 @@ class RoleController extends BaseController
         return view('plum::role.create');
     }
 
-    public function store()
+    public function store(RoleRequest $request)
     {
-        dd(request()->all());
+        dd($request->all());
     }
 
     public function edit($id)

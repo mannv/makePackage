@@ -17,6 +17,7 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.0",
         "livewire/livewire": "^2.0",
+        "plum/form": "1.1.1",
         "plum/laravel-permission": "@dev",
         "spatie/laravel-permission": "^3.16"
     },
